@@ -1,7 +1,11 @@
-GET /~skabir5/ HTTP
+skabir5@dutch:~$ telnet dutch.mathcs.emory.edu 80
+Trying 170.140.150.171...
+Connected to dutch.mathcs.emory.edu.
+Escape character is '^]'.
+GET /~skabir5/ HTTP/1.0
 
 HTTP/1.1 200 OK
-Date: Sun, 25 Jan 2015 02:41:37 GMT
+Date: Sun, 25 Jan 2015 03:22:06 GMT
 Server: Apache/2.2.22 (Ubuntu)
 Last-Modified: Sun, 25 Jan 2015 02:20:48 GMT
 ETag: "e00008-39-50d70ab8301c8"
@@ -17,3 +21,4 @@ Content-Type: text/html
 	</body>
 </html>
 Connection closed by foreign host.
+skabir5@dutch:~$ 
