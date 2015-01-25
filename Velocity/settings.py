@@ -49,9 +49,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.security.SecurityMiddleware',
 )
 
-ROOT_URLCONF = 'Test.urls'
+ROOT_URLCONF = 'Velocity.urls'
 
-WSGI_APPLICATION = 'Test.wsgi.application'
+WSGI_APPLICATION = 'Velocity.wsgi.application'
 
 
 # Database
