@@ -6,3 +6,4 @@ from django.views.generic import ListView
 
 class ListTaskView(ListView):
     model = Task
+    template_name = 'task_list.html'
