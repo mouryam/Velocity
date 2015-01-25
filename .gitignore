@@ -46,7 +46,7 @@ coverage.xml
 
 # Django stuff:
 *.log
-settings.py
+db.sqlite3
 
 
 # Sphinx documentation
@@ -55,4 +55,6 @@ docs/_build/
 # PyBuilder
 target/
 
+# PyCharm files
+.idea/
 
