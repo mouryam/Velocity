@@ -23,6 +23,13 @@ class CreateTaskView(CreateView):
     def get_success_url(self):
         return reverse('tasks-list')
 
+    def get_context_data(self, **kwargs):
+
+        context = super(CreateTaskView, self).get_context_data(**kwargs)
+        context['action'] = reverse('tasks-new')
+
+        return context
+
 class DeleteTaskView(DeleteView):
 
     model = Task
@@ -34,8 +41,16 @@ class DeleteTaskView(DeleteView):
 
 class UpdateTaskView(UpdateView):
 
+    fields = ['task_name', ]
     model = Task
     template_name = 'add_task.html'
 
     def get_success_url(self):
         return reverse('tasks-list')
+
+    def get_context_data(self, **kwargs):
+
+        context = super(UpdateTaskView, self).get_context_data(**kwargs)
+        context['action'] = reverse('tasks-edit', kwargs={'pk' : self.get_object().id})
+
+        return context

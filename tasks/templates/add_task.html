@@ -1,6 +1,11 @@
-<h1>Add Task</h1>
 
-<form action= "{% url "tasks-new" %}" method="POST">
+{% if task.id %}
+<h1>Edit Task</h1>
+{% else %}
+<h1>Add Task</h1>
+{% endif %}
+
+<form action= "{{action}}" method="POST">
   {% csrf_token %}
   <ul>
     {{ form.as_p }}

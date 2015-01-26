@@ -14,7 +14,7 @@ urlpatterns = [
     url(r'^$', tasks.views.ListTaskView.as_view(), name='tasks-list'),
     url(r'^new$', tasks.views.CreateTaskView.as_view(), name='tasks-new',),
     url(r'^delete/(?P<pk>\d+)/$', tasks.views.DeleteTaskView.as_view(), name='tasks-delete',),
-    url(r'^edit/(?P<pk>\d+/$', tasks.views.UpdateTaskView.as_view(), name='tasks-new'),
+    url(r'^edit/(?P<pk>\d+)/$', tasks.views.UpdateTaskView.as_view(), name='tasks-edit'),
 ]
 
 urlpatterns += staticfiles_urlpatterns()
