@@ -9,8 +9,8 @@
 <form action="{% url "tasks-delete" pk=task.id %}" method="POST">
   {% csrf_token %}
 
-  <input type="submit" value="Yes, delete." />
-  <a href="{% url "tasks-list" %}">No, cancel.</a>
+  <input type="submit" value="DELETE" />
+  <a href="{% url "tasks-list" %}"><input type="button" value="CANCEL"/></a>
 </form>
 
 {% endblock %}
