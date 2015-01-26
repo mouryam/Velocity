@@ -5,6 +5,7 @@ from django.views.generic import (
     ListView,
     CreateView,
     DeleteView,
+    UpdateView,
 )
 
 # Create your views here.
@@ -31,4 +32,10 @@ class DeleteTaskView(DeleteView):
         return reverse('tasks-list')
 
 
+class UpdateTaskView(UpdateView):
 
+    model = Task
+    template_name = 'add_task.html'
+
+    def get_success_url(self):
+        return reverse('tasks-list')
