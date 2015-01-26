@@ -3,6 +3,8 @@
 {% block content %}
 <h1>Tasks</h1>
 
+<a href="{% url "tasks-new" %}">New Task</a>
+
 <ul>
     {% for task in object_list %}
         <li class="task">{{task}}</li>
