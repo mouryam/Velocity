@@ -8,8 +8,12 @@
 <ul>
     {% for task in object_list %}
         <li class="task">{{task}}
+<<<<<<< HEAD
 
             <a href="{% url "tasks-delete" pk=task.id %}">delete</a>
+=======
+            <a href="{% url "tasks-edit" pk=task.id %}">Edit</a>
+>>>>>>> shureed
         </li>
     {% endfor %}
 </ul>
