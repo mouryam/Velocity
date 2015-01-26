@@ -11,7 +11,8 @@ urlpatterns = [
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^$', tasks.views.ListTaskView.as_view(), name='tasks-list')
+    url(r'^$', tasks.views.ListTaskView.as_view(), name='tasks-list'),
+    url(r'^new$', tasks.views.CreateTaskView.as_view(), name='tasks-new',),
 ]
 
 urlpatterns += staticfiles_urlpatterns()
