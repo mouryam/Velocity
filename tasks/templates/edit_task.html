@@ -9,3 +9,7 @@
 </form>
 
 <a href="{% url "tasks-list" %}">back to list</a>
+
+{% if contact.id %}
+<a href="{% url "contacts-delete" pk=contact.id %}">Delete</a>
+{% endif %}
