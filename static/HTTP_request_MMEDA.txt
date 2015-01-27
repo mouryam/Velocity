@@ -1,0 +1,27 @@
+mmeda@dutch:~/Prj1/static$ telnet dutch.mathcs.emory.edu 80
+Trying 170.140.150.171...
+Connected to dutch.mathcs.emory.edu.
+Escape character is '^]'.
+GET /~mmeda/ HTTP/1.0
+
+HTTP/1.1 200 OK
+Date: Tue, 27 Jan 2015 04:27:41 GMT
+Server: Apache/2.2.22 (Ubuntu)
+Last-Modified: Tue, 27 Jan 2015 03:02:24 GMT
+ETag: "30000f-56-50d997bf67a31"
+Accept-Ranges: bytes
+Content-Length: 86
+Vary: Accept-Encoding
+Connection: close
+Content-Type: text/html
+
+<html>
+<head>
+<title>Mourya Meda!</title>
+</head>
+<body>
+MOURYA MEDA
+</body>
+</html>
+
+Connection closed by foreign host.
