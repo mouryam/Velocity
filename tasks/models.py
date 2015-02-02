@@ -14,11 +14,3 @@ class Task(models.Model):
     def __str__(self):
         return self.task_name
 
-    def is_complete(self):
-        return self.task_completed
-
-    def check_off(self):
-        self.task_completed = True
-
-    def rename(self, new_name):
-        self.task_name = new_name
