@@ -7,8 +7,8 @@ class Task(models.Model):
 
     task_name = models.CharField(max_length=255)
 
-    due_date = models.DateField();
+    due_date = models.DateField()
 
     def __str__(self):
-        return self.task_name
+        return self.task_name + " -- Due: " + str(self.due_date)
 

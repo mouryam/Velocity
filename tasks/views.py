@@ -16,7 +16,7 @@ class ListTaskView(ListView):
 
 class CreateTaskView(CreateView):
 
-    fields = ['task_name', ]
+    fields = ['task_name', 'due_date', ]
     model = Task
     template_name = 'add_task.html'
 
@@ -41,7 +41,7 @@ class DeleteTaskView(DeleteView):
 
 class UpdateTaskView(UpdateView):
 
-    fields = ['task_name', ]
+    fields = ['task_name', 'due_date', ]
     model = Task
     template_name = 'add_task.html'
 
