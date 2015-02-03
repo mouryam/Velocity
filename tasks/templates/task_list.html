@@ -7,7 +7,8 @@
 
 <ul>
     {% for task in object_list %}
-        <li class="task">{{task}}
+        <li class="task">
+            <a href="{{ task.get_absolute_url }}">{{task}}</a>
             <a href="{% url "tasks-edit" pk=task.id %}">EDIT</a>
             /
             <a href="{% url "tasks-delete" pk=task.id %}">DELETE</a>

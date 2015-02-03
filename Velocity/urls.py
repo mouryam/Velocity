@@ -15,6 +15,10 @@ urlpatterns = [
     url(r'^new$', tasks.views.CreateTaskView.as_view(), name='tasks-new',),
     url(r'^delete/(?P<pk>\d+)/$', tasks.views.DeleteTaskView.as_view(), name='tasks-delete',),
     url(r'^edit/(?P<pk>\d+)/$', tasks.views.UpdateTaskView.as_view(), name='tasks-edit'),
+    url(r'^(?P<pk>\d+)/$', tasks.views.TaskView.as_view(), name='tasks-view',),
+    url(r'^login/$', 'django.contrib.auth.views.login'),
+    url(r'^logout/$', 'django.contrib.auth.views.logout'),
+
 ]
 
 urlpatterns += staticfiles_urlpatterns()
