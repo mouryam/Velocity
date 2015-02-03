@@ -29,9 +29,10 @@ class ListTaskView(LoggedInMixin, ListView):
     def get_queryset(self):
         return Task.objects.filter(owner=self.request.user)
 
-class CreateTaskView(CreateView):
 
-    fields = ['task_name', 'due_date', ]
+class CreateTaskView(LoggedInMixin, CreateView):
+
+    fields = ['task_name', 'due_date', 'owner', ]
     model = Task
     template_name = 'add_task.html'
 
@@ -44,6 +45,12 @@ class CreateTaskView(CreateView):
         context['action'] = reverse('tasks-new')
 
         return context
+
+    def get_initial(self):
+        return {
+            'owner': self.request.user
+        }
+
 
 class DeleteTaskView(DeleteView):
 
@@ -69,6 +76,7 @@ class UpdateTaskView(UpdateView):
         context['action'] = reverse('tasks-edit', kwargs={'pk' : self.get_object().id})
 
         return context
+
 
 class TaskView(LoggedInMixin, DetailView):
 
