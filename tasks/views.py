@@ -7,12 +7,24 @@ from django.views.generic import (
     DeleteView,
     UpdateView,
 )
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 
 # Create your views here.
 
-class ListTaskView(ListView):
+
+class LoggedInMixin(object):
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(LoggedInMixin, self).dispatch(*args, **kwargs)
+
+
+class ListTaskView(LoggedInMixin, ListView):
     model = Task
     template_name = 'task_list.html'
+
+    def get_queryset(self):
+        return Task.objects.filter(owner=self.request.user)
 
 class CreateTaskView(CreateView):
 
@@ -54,3 +66,6 @@ class UpdateTaskView(UpdateView):
         context['action'] = reverse('tasks-edit', kwargs={'pk' : self.get_object().id})
 
         return context
+
+
+
