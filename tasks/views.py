@@ -22,6 +22,7 @@ class LoggedInMixin(object):
 
 
 class ListTaskView(LoggedInMixin, ListView):
+
     model = Task
     template_name = 'task_list.html'
 
