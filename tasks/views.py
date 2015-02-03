@@ -32,7 +32,7 @@ class ListTaskView(LoggedInMixin, ListView):
 
 class CreateTaskView(LoggedInMixin, CreateView):
 
-    fields = ['task_name', 'due_date', 'owner', ]
+    fields = ['task_name', 'due_date', ]
     model = Task
     template_name = 'add_task.html'
 
@@ -46,10 +46,9 @@ class CreateTaskView(LoggedInMixin, CreateView):
 
         return context
 
-    def get_initial(self):
-        return {
-            'owner': self.request.user
-        }
+    def form_valid(self, form):
+        form.instance.owner = self.request.user
+        return super(CreateTaskView, self).form_valid(form)
 
 
 class DeleteTaskView(DeleteView):
