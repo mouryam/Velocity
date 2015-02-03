@@ -1,3 +1,5 @@
+from django.core.exceptions import ObjectDoesNotExist
+from django.http import Http404
 from django.shortcuts import render
 from tasks.models import Task
 from django.core.urlresolvers import reverse
@@ -6,7 +8,7 @@ from django.views.generic import (
     CreateView,
     DeleteView,
     UpdateView,
-)
+    DetailView)
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 
@@ -67,5 +69,24 @@ class UpdateTaskView(UpdateView):
 
         return context
 
+class TaskView(LoggedInMixin, DetailView):
 
+    model = Task
+    template_name = 'task.html'
+
+    def get_object(self, queryset=None):
+
+        if queryset is None:
+            queryset = self.get_queryset()
+
+        pk = self.kwargs.get(self.pk_url_kwarg, None)
+        queryset = queryset.filter(pk=pk, owner=self.request.user, )
+
+        try:
+            obj = queryset.get()
+        except ObjectDoesNotExist:
+            raise Http404(_(u"No %(verbose_name)s found matching the query") %
+                          {'verbose_name': queryset.model._meta.verbose_name})
+
+        return obj
 

@@ -11,7 +11,7 @@ class Task(models.Model):
 
     due_date = models.DateField()
 
-    owner = models.ForeignKey(User)
+    owner = models.ForeignKey(User, blank=True, null=True)
 
 
     def __str__(self):
