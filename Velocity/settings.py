@@ -86,3 +86,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'staticfiles'),)
+
+# Templates for login
+TEMPLATE_DIRS = ('Velocity/templates', )
+
+# Login redirect
+LOGIN_REDIRECT_URL = '/'
+LOGIN_URL = 'django.contrib.auth.views.login'

@@ -1,3 +1,5 @@
+from django.core.exceptions import ObjectDoesNotExist
+from django.http import Http404
 from django.shortcuts import render
 from tasks.models import Task
 from django.core.urlresolvers import reverse
@@ -6,17 +8,31 @@ from django.views.generic import (
     CreateView,
     DeleteView,
     UpdateView,
-)
+    DetailView)
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 
 # Create your views here.
 
-class ListTaskView(ListView):
+
+class LoggedInMixin(object):
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(LoggedInMixin, self).dispatch(*args, **kwargs)
+
+
+class ListTaskView(LoggedInMixin, ListView):
+
     model = Task
     template_name = 'task_list.html'
 
-class CreateTaskView(CreateView):
+    def get_queryset(self):
+        return Task.objects.filter(owner=self.request.user)
 
-    fields = ['task_name', ]
+
+class CreateTaskView(LoggedInMixin, CreateView):
+
+    fields = ['task_name', 'due_date', ]
     model = Task
     template_name = 'add_task.html'
 
@@ -30,6 +46,11 @@ class CreateTaskView(CreateView):
 
         return context
 
+    def form_valid(self, form):
+        form.instance.owner = self.request.user
+        return super(CreateTaskView, self).form_valid(form)
+
+
 class DeleteTaskView(DeleteView):
 
     model = Task
@@ -41,7 +62,7 @@ class DeleteTaskView(DeleteView):
 
 class UpdateTaskView(UpdateView):
 
-    fields = ['task_name', ]
+    fields = ['task_name', 'due_date', ]
     model = Task
     template_name = 'add_task.html'
 
@@ -54,3 +75,26 @@ class UpdateTaskView(UpdateView):
         context['action'] = reverse('tasks-edit', kwargs={'pk' : self.get_object().id})
 
         return context
+
+
+class TaskView(LoggedInMixin, DetailView):
+
+    model = Task
+    template_name = 'task.html'
+
+    def get_object(self, queryset=None):
+
+        if queryset is None:
+            queryset = self.get_queryset()
+
+        pk = self.kwargs.get(self.pk_url_kwarg, None)
+        queryset = queryset.filter(pk=pk, owner=self.request.user, )
+
+        try:
+            obj = queryset.get()
+        except ObjectDoesNotExist:
+            raise Http404(_(u"No %(verbose_name)s found matching the query") %
+                          {'verbose_name': queryset.model._meta.verbose_name})
+
+        return obj
+
