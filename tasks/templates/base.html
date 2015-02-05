@@ -14,10 +14,13 @@
 
 
         {% else  %}
-        {{user}}
+
+        <div id="bar">
+            <p id="name">{{user}}</p>
 
 
-        <a href="{% url 'django.contrib.auth.views.logout' %}">LOGOUT</a>
+        <a href="{% url 'django.contrib.auth.views.logout' %}" id="logout"><input type="button" value="LOGOUT" class="itemButton"/></a>
+        </div>
 
         {% endif %}
 
