@@ -1,9 +1,11 @@
 from django.conf.urls import include, url
 from django.contrib import admin
-
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 import tasks.views
+
+from django.views.generic.edit import CreateView
+from django.contrib.auth.forms import UserCreationForm
 
 urlpatterns = [
     # Examples:
@@ -18,6 +20,7 @@ urlpatterns = [
     url(r'^(?P<pk>\d+)/$', tasks.views.TaskView.as_view(), name='tasks-view',),
     url(r'^login/$', 'django.contrib.auth.views.login'),
     url(r'^logout/$', 'django.contrib.auth.views.logout'),
+
 
 ]
 
