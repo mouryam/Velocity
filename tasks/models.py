@@ -11,18 +11,13 @@ class Task(models.Model):
 
     due_date = models.DateField()
 
-    comment = models.CharField(max_length=500)
+    comment = models.CharField(max_length=500, blank=True, null=True)
 
     owner = models.ForeignKey(User, blank=True, null=True)
 
-
     def __str__(self):
-<<<<<<< HEAD
+
         return self.task_name + " -- Due: " + str(self.due_date)
-=======
-        return (self.task_name + " -- Due: " + str(self.due_date) + "-- owner: " + str(self.owner)
-                + "-- Comment: " + str(self.comment))
->>>>>>> pr/25
 
     def get_absolute_url(self):
         return reverse('tasks-view', kwargs={'pk' : self.id})
