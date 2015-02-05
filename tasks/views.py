@@ -11,9 +11,7 @@ from django.views.generic import (
     DetailView)
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import User
-from django import forms
+
 
 # Create your views here.
 
@@ -100,6 +98,8 @@ class TaskView(LoggedInMixin, DetailView):
                           {'verbose_name': queryset.model._meta.verbose_name})
 
         return obj
+
+
 
 
 
