@@ -2,29 +2,47 @@
 
 {% block content %}
 
-{% if form.errors %}
-<p>Incorrect username and/or password.</p>
-{% endif %}
+<div id="loginBox">
+    <h1>velocity</h1>
 
-<form method="post" action="{% url 'django.contrib.auth.views.login' %}">
-{% csrf_token %}
+    <h3>swift and sim</h3>
 
 
-<table>
-<tr>
-    <td>{{ form.username.label_tag }}</td>
-    <td>{{ form.username }}</td>
-</tr>
 
-<tr>
-    <td>{{ form.password.label_tag }}</td>
-    <td>{{ form.password }}</td>
-</tr>
-</table>
+    {% if form.errors %}
+    <p>(invalid username/password)</p>
 
-<input type="submit" value="login" />
-<input type="hidden" name="next" value="{{ next }}" />
-</form>
+    {% else %}
+    <br>
+
+    {% endif %}
+
+    <form method="post" action="{% url 'django.contrib.auth.views.login' %}">
+    {% csrf_token %}
+
+
+
+    <table>
+    <tr>
+        <td><p>username:</p></td>
+        <td>{{ form.username }}</td>
+    </tr>
+
+    <tr>
+        <td><p>password:</p></td>
+        <td>{{ form.password }}</td>
+    </tr>
+    </table>
+
+        <p></p>
+
+        <br>
+
+    <input type="submit" value="login" /> <a href="{% url "register" %}"> <button value="Register" type="button">register</button></a>
+    <input type="hidden" name="next" value="{{ next }}" />
+    </form>
+
+</div>
 
  <a href= "{% url "register" %}" >Register Here</a>
 
