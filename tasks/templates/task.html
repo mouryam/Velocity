@@ -2,8 +2,14 @@
 
 {% block content %}
 
+<div id="detail">
 <h1>{{ task }}</h1>
 
-<p>Task {{ task.task_name }}</p>
+
+
+<p>{{task.due_date}}</p>
+<p>{{task.comment}}</p>
+
+</div>
 
 {% endblock %}

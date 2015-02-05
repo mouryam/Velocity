@@ -2,6 +2,8 @@
 
 {% block content %}
 
+<div id="loginBox">
+
 {% if task.id %}
 <h1>Edit Task</h1>
 {% else %}
@@ -14,8 +16,10 @@
     {{ form.as_p }}
   </ul>
   <input id="save_task" type="submit" value="SAVE" />
+
 </form>
 
-<a href="{% url "tasks-list" %}"><input type="button" value="BACK"></a>
+</div>
+
 
 {% endblock %}

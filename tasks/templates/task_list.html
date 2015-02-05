@@ -1,21 +1,42 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Tasks</h1>
 
-<a href="{% url "tasks-new" %}">New Task</a>
+
+
+<a href="{% url "tasks-new" %}"><input type="button" class="itemButton" value="NEW" style="margin-left: 50%"> </a>
+
+
+
+
 
 <ul>
     {% for task in object_list %}
-        <li class="task">
-            <a href="{{ task.get_absolute_url }}">{{task}}</a>
-            <a href="{% url "tasks-edit" pk=task.id %}">EDIT</a>
-            /
-            <a href="{% url "tasks-delete" pk=task.id %}">DELETE</a>
+        <div class="task">
+
+            <form action="{% url "tasks-delete" pk=task.id %}" method="POST">
+                {% csrf_token %}
+                <input type="submit" value="DONE" class="itemButton"/>
+
+                <div class="box">
+
+                <a id="taskName" href="{{ task.get_absolute_url }}">{{task}}</a>
+
+                <a id="taskDate" href="{{ task.get_absolute_url }}">{{task.due_date}}</a>
+
+                </div>
+
+                <a href="{% url "tasks-edit" pk=task.id %}">
+                    <input type="button" value="EDIT" class="itemButton" id="edit">
+                </a>
 
 
 
-        </li>
+
+            </form>
+
+
+        </div>
     {% endfor %}
 </ul>
 
