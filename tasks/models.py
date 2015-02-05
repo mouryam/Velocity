@@ -15,7 +15,7 @@ class Task(models.Model):
 
 
     def __str__(self):
-        return self.task_name + " -- Due: " + str(self.due_date) + "-- owner: " + str(self.owner)
+        return self.task_name + " -- Due: " + str(self.due_date)
 
     def get_absolute_url(self):
         return reverse('tasks-view', kwargs={'pk' : self.id})
