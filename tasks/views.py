@@ -91,10 +91,7 @@ class TaskView(LoggedInMixin, DetailView):
         pk = self.kwargs.get(self.pk_url_kwarg, None)
         queryset = queryset.filter(pk=pk, owner=self.request.user, )
 
-        try:
-            obj = queryset.get()
-        except ObjectDoesNotExist:
-            
+        obj = queryset.get()
 
         return obj
 
