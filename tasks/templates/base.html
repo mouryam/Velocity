@@ -12,8 +12,11 @@
         {% if user.is_anonymous %}
         <a href="{% url 'django.contrib.auth.views.login' %}"></a>
 
+
         {% else  %}
         {{user}}
+
+
         <a href="{% url 'django.contrib.auth.views.logout' %}">LOGOUT</a>
 
         {% endif %}

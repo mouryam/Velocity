@@ -12,6 +12,7 @@ from django.views.generic import (
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 
+
 # Create your views here.
 
 
@@ -32,7 +33,7 @@ class ListTaskView(LoggedInMixin, ListView):
 
 class CreateTaskView(LoggedInMixin, CreateView):
 
-    fields = ['task_name', 'due_date', ]
+    fields = ['task_name', 'due_date', 'comment']
     model = Task
     template_name = 'add_task.html'
 
@@ -62,7 +63,7 @@ class DeleteTaskView(DeleteView):
 
 class UpdateTaskView(UpdateView):
 
-    fields = ['task_name', 'due_date', ]
+    fields = ['task_name', 'due_date', 'comment']
     model = Task
     template_name = 'add_task.html'
 
@@ -97,4 +98,10 @@ class TaskView(LoggedInMixin, DetailView):
                           {'verbose_name': queryset.model._meta.verbose_name})
 
         return obj
+
+
+
+
+
+
 
