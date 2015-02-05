@@ -5,7 +5,7 @@
 <div id="loginBox">
     <h1>velocity</h1>
 
-    <h3>whatever you do, do it hard and fast</h3>
+    <h3>swift and sim</h3>
 
 
 
@@ -24,12 +24,12 @@
 
     <table>
     <tr>
-        <td><p>username</p></td>
+        <td><p>username:</p></td>
         <td>{{ form.username }}</td>
     </tr>
 
     <tr>
-        <td><p>password</p></td>
+        <td><p>password:</p></td>
         <td>{{ form.password }}</td>
     </tr>
     </table>
@@ -38,7 +38,7 @@
 
         <br>
 
-    <input type="submit" value="login" /> <button value="Register">register</button>
+    <input type="submit" value="login" /> <a href="{% url "register" %}"> <button value="Register" type="button">register</button></a>
     <input type="hidden" name="next" value="{{ next }}" />
     </form>
 

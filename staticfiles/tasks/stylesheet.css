@@ -34,7 +34,7 @@ h3{
     margin-left: 13em;
     margin-right: 13em;
     margin-top: 6em;
-    ;
+
 
     -webkit-box-shadow: -2px 1px 30px 0px rgba(255, 255, 255, 0.88);
     -moz-box-shadow:    -2px 1px 30px 0px rgba(255, 255, 255, 0.88);
@@ -58,8 +58,12 @@ input[type=submit], #loginBox button{
     color: orange;
     padding: .5em 1em .5em 1em;
     font-size: 1em;
+    transition: .3s;
+}
 
-
+input[type=submit]:hover, #loginBox button:hover{
+    color: black;
+    background: orange;
 }
 
 input[type=text]:focus, input[type=password]:focus{
