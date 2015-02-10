@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "baseLogin.html" %}
 {% block content %}
 
 <div id="loginBox">
@@ -9,7 +9,7 @@
     {% csrf_token %}
 
     {% if form.errors %}
-    (Error)
+    (form not completed correctly)
     {% else %}
     <br>
     {% endif %}
