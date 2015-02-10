@@ -7,19 +7,13 @@
 
   <body>
 
-          {% if user.is_anonymous %}
-          <div id="loginBox">
-              <h2>please log in:</h2>
-              <a href="{% url 'django.contrib.auth.views.login' %}"><button type="button">LOGIN</button></a>
-          </div>
-
-        {% else  %}
     <div>
 
+        {% if user.is_anonymous %}
+        <a href="{% url 'django.contrib.auth.views.login' %}"></a>
 
 
-
-
+        {% else  %}
 
         <div id="bar">
             <p id="name">{{user}}</p>
@@ -28,14 +22,12 @@
         <a href="{% url 'django.contrib.auth.views.logout' %}" id="logout"><input type="button" value="LOGOUT" class="itemButton"/></a>
         </div>
 
-
+        {% endif %}
 
     </div>
 
     {% block content %}
     {% endblock %}
-
-  {% endif %}
 
   </body>
 </html>
