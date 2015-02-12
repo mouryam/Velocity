@@ -91,11 +91,7 @@ class TaskView(LoggedInMixin, DetailView):
         pk = self.kwargs.get(self.pk_url_kwarg, None)
         queryset = queryset.filter(pk=pk, owner=self.request.user, )
 
-        try:
-            obj = queryset.get()
-        except ObjectDoesNotExist:
-            raise Http404(_(u"No %(verbose_name)s found matching the query") %
-                          {'verbose_name': queryset.model._meta.verbose_name})
+        obj = queryset.get()
 
         return obj
 
